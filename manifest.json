@@ -1,0 +1,26 @@
+{
+  "name": "Say Word",
+  "short_name": "Say Word",
+  "start_url": "/say-word/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3550ff",
+  "description": "Test and Practice Sight Words",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

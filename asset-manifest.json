@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/say-word/static/css/main.0abc1396.chunk.css",
+    "main.js": "/say-word/static/js/main.5096e3d9.chunk.js",
+    "main.js.map": "/say-word/static/js/main.5096e3d9.chunk.js.map",
+    "runtime~main.js": "/say-word/static/js/runtime~main.4abc4a4f.js",
+    "runtime~main.js.map": "/say-word/static/js/runtime~main.4abc4a4f.js.map",
+    "static/js/2.7e7ca635.chunk.js": "/say-word/static/js/2.7e7ca635.chunk.js",
+    "static/js/2.7e7ca635.chunk.js.map": "/say-word/static/js/2.7e7ca635.chunk.js.map",
+    "index.html": "/say-word/index.html",
+    "precache-manifest.2e004b75d399e86a39aad49002c1a91d.js": "/say-word/precache-manifest.2e004b75d399e86a39aad49002c1a91d.js",
+    "service-worker.js": "/say-word/service-worker.js",
+    "static/css/main.0abc1396.chunk.css.map": "/say-word/static/css/main.0abc1396.chunk.css.map"
+  }
+}
