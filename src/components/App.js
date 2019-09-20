@@ -14,7 +14,9 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className='page'>
+      <div className='appName'><div>Say</div><div>Word</div></div>
+      <button>Go</button>
       <div className='title'>Results</div>
       <ul>
         { results.map((result) => (
