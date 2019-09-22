@@ -1,0 +1,34 @@
+.wordBox {
+  display: flex;
+  justify-content: center;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  margin: 0 8px;
+  background: #ffffff30;
+  font-size: 1.8rem;
+}
+
+.remove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #ff2b40;
+  font-size: 1.5rem;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #20ff00;
+  font-size: 2rem;
+}

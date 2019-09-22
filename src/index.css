@@ -2,6 +2,7 @@
   --bg: #3550ff;
   --text: #fcfcfc;
   --text-name: #00000012;
+  --font-accent: 'Titillium Web', sans-serif;
 }
 
 * {
@@ -26,26 +27,22 @@ body {
   padding: 8px;
 }
 
+.accent {
+  font-family: var(--font-accent);
+}
+
 .appName {
+  z-index: -1;
   position: absolute;
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%) rotate(90deg);
   font-size: 250px;
   color: var(--text-name);
-  font-family: 'Titillium Web', sans-serif;
   line-height: 0.80em;
   text-transform: uppercase;
 }
 
-.title {
-  color: #d0d0ff;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.confidence {
-  margin-left: 16px;
-  color: #a0a0a0;
-  font-size: 0.8em;
+button {
+  border-radius: 4px;
 }

@@ -1,0 +1,20 @@
+.main {
+  min-height: 3em;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background: #303030;
+  color: #ffffffc0;
+  font-size: 0.8em;
+}
+
+.button {
+  padding: 2px 4px;
+  background: #ffffff20;
+}
+
+.confidence {
+  margin-left: 1em;
+  color: #ffffff40;
+  font-size: 0.5em;
+}
