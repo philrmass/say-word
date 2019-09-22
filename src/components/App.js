@@ -1,11 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import Heard from './Heard';
+import Home from './Home';
 import List from './List';
 
 function App() {
   const [recognizer, setRecognizer] = useState(null);
   const [listening, setListening] = useState(false);
   const [result, setResult] = useState({ transcript: 'hello', confidence: .9544 });
+  const [lists, setLists] = useState({});
+  const [list, setList] = useState(null);
 
   function toggleListening() {
     if (listening) {
@@ -26,6 +29,14 @@ function App() {
     }
   }
 
+  function addList(name) {
+    console.log('ADD LIST', name);
+  }
+
+  //const showGame;
+  const showList = Boolean(list);
+  const showHome = !showList;
+
   return (
     <Fragment>
       <header>
@@ -37,10 +48,19 @@ function App() {
       </header>
       <main className='page'>
         <div className='accent appName'><div>Say</div><div>Word</div></div>
-        <List
-          listening={listening}
-          result={result}
-        />
+        { showHome &&
+            <Home
+              listening={listening}
+              result={result}
+              addList={addList}
+            />
+        }
+        { showList && 
+            <List
+              listening={listening}
+              result={result}
+            />
+        }
       </main>
     </Fragment>
   );

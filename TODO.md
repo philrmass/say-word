@@ -1,5 +1,6 @@
 # Tasks
-- Try restarting speech recognition after each result (if needed)
-- Start speech detection from function call
-- Add Heard as header
-- Save only last result in state, pass a prop to Heard
+- Add a list as an object under the object key of its name.
+- Display all lists as buttons on home page, click to select/open
+- Add a word object to a list, addWord(word, listName)
+- Save lists in local storage with local storage useEffect
+- Add prop types
