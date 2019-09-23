@@ -1,6 +1,7 @@
 .wordBox {
   display: flex;
   justify-content: center;
+  font-size: 1.8em;
 }
 
 .result {
@@ -10,25 +11,27 @@
   padding: 0 32px;
   margin: 0 8px;
   background: #ffffff30;
-  font-size: 1.8rem;
 }
 
 .remove {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1em;
+  height: 1em;
   background: #ff2b40;
-  font-size: 1.5rem;
+  font-height: 0.62em;
 }
 
 .add {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.6em; 
+  height: 1.6em; 
   background: #20ff00;
-  font-size: 2rem;
+}
+
+.word {
+  display: flex;
 }

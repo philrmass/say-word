@@ -8,7 +8,7 @@ function App() {
   const [listening, setListening] = useState(false);
   const [result, setResult] = useState({ transcript: 'hello', confidence: .9544 });
   const [lists, setLists] = useState({});
-  const [list, setList] = useState(null);
+  const [listName, setListName] = useState(null);
 
   function toggleListening() {
     if (listening) {
@@ -39,11 +39,26 @@ function App() {
   }
 
   function openList(name) {
-    console.log('OPEN LIST', name);
+    setListName(name);
+  }
+
+  function addWord(word, name) {
+    const list = lists[name];
+    list[word] = {};
+    setLists({
+      ...lists,
+      [name]: {
+        ...list,
+      }
+    });
+  }
+
+  function removeWord(word, listName) {
+    console.log('REM-WORD', word, listName);
   }
 
   //const showGame;
-  const showList = Boolean(list);
+  const showList = Boolean(listName);
   const showHome = !showList;
 
   return (
@@ -70,6 +85,10 @@ function App() {
             <List
               listening={listening}
               result={result}
+              listName={listName}
+              list={lists[listName]}
+              addWord={addWord}
+              removeWord={removeWord}
             />
         }
       </main>
