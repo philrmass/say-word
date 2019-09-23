@@ -30,7 +30,16 @@ function App() {
   }
 
   function addList(name) {
-    console.log('ADD LIST', name);
+    if (!lists[name]) {
+      setLists((lists) => ({
+        ...lists,
+        [name]: {},
+      }));
+    }
+  }
+
+  function openList(name) {
+    console.log('OPEN LIST', name);
   }
 
   //const showGame;
@@ -52,7 +61,9 @@ function App() {
             <Home
               listening={listening}
               result={result}
+              lists={lists}
               addList={addList}
+              openList={openList}
             />
         }
         { showList && 
