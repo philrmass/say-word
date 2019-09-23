@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { useLocalStorage } from '../utilities/storage';
 import Heard from './Heard';
 import Home from './Home';
 import List from './List';
@@ -7,8 +8,8 @@ function App() {
   const [recognizer, setRecognizer] = useState(null);
   const [listening, setListening] = useState(false);
   const [result, setResult] = useState({ transcript: 'hello', confidence: .9544 });
-  const [lists, setLists] = useState({});
   const [listName, setListName] = useState(null);
+  const [lists, setLists] = useLocalStorage('wordLists', {});
 
   function toggleListening() {
     if (listening) {
@@ -42,9 +43,13 @@ function App() {
     setListName(name);
   }
 
+  function closeList() {
+    setListName(null);
+  }
+
   function addWord(word, name) {
     const list = lists[name];
-    list[word] = {};
+    list[word.trim()] = {};
     setLists({
       ...lists,
       [name]: {
@@ -53,8 +58,15 @@ function App() {
     });
   }
 
-  function removeWord(word, listName) {
-    console.log('REM-WORD', word, listName);
+  function removeWord(word, name) {
+    const list = lists[name];
+    delete list[word];
+    setLists({
+      ...lists,
+      [name]: {
+        ...list,
+      }
+    });
   }
 
   //const showGame;
@@ -87,6 +99,7 @@ function App() {
               result={result}
               listName={listName}
               list={lists[listName]}
+              closeList={closeList}
               addWord={addWord}
               removeWord={removeWord}
             />
