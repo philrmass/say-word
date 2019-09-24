@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useLocalStorage } from '../utilities/storage';
+import Game from './Game';
 import Heard from './Heard';
 import Home from './Home';
 import List from './List';
@@ -10,6 +11,7 @@ function App() {
   const [result, setResult] = useState({ transcript: 'hello', confidence: .9544 });
   const [listName, setListName] = useState(null);
   const [lists, setLists] = useLocalStorage('wordLists', {});
+  const [gameName, setGameName] = useState(null);
 
   function toggleListening() {
     if (listening) {
@@ -47,6 +49,14 @@ function App() {
     setListName(null);
   }
 
+  function startGame(name) {
+    setGameName(name);
+  }
+
+  function stopGame(name) {
+    setGameName(null);
+  }
+
   function addWord(word, name) {
     const list = lists[name];
     list[word.trim()] = {};
@@ -69,9 +79,10 @@ function App() {
     });
   }
 
-  //const showGame;
-  const showList = Boolean(listName);
-  const showHome = !showList;
+  const showGame = Boolean(gameName);
+  const showList = !showGame && Boolean(listName);
+  const showHome = !showGame && !showList;
+  console.log('g', showGame, 'l', showList, 'h', showHome);
 
   return (
     <Fragment>
@@ -85,24 +96,33 @@ function App() {
       <main className='page'>
         <div className='accent appName'><div>Say</div><div>Word</div></div>
         { showHome &&
-            <Home
-              listening={listening}
-              result={result}
-              lists={lists}
-              addList={addList}
-              openList={openList}
-            />
+          <Home
+            listening={listening}
+            result={result}
+            lists={lists}
+            addList={addList}
+            openList={openList}
+            startGame={startGame}
+          />
         }
         { showList && 
-            <List
-              listening={listening}
-              result={result}
-              listName={listName}
-              list={lists[listName]}
-              closeList={closeList}
-              addWord={addWord}
-              removeWord={removeWord}
-            />
+          <List
+            listening={listening}
+            result={result}
+            listName={listName}
+            list={lists[listName]}
+            closeList={closeList}
+            addWord={addWord}
+            removeWord={removeWord}
+          />
+        }
+        { showGame &&
+          <Game
+            result={result}
+            name={gameName}
+            list={lists[gameName]}
+            stopGame={stopGame}
+          />
         }
       </main>
     </Fragment>

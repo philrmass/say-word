@@ -31,6 +31,12 @@
   font-size: 2rem;
 }
 
+.play {
+  width: 1em;
+  height: 1rem;
+  background: #6510ff;
+}
+
 .listName {
   padding: 0 8px;
   margin-left: 8px;

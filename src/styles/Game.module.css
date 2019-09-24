@@ -1,0 +1,43 @@
+.main {
+  padding: 16px;
+  background: #6510ff80;
+}
+
+.questionBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.question {
+  padding: 16px 32px;
+  background: #6208d0;
+  font-size: 4em;
+}
+
+.stopBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 16px;
+}
+
+.stop {
+  padding: 4px 8px;
+  background: #ff2b40;
+}
+
+.scoreBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 16px;
+}
+
+.score {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #484848;
+  color: #b0b0b0;
+  font-size: 2em;
+}

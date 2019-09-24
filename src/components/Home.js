@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
-function Home({ listening, result, lists, addList, openList }) {
+function Home({ listening, result, lists, addList, openList, startGame }) {
   const [addingList, setAddingList] = useState(false);
 
   function add(name) {
@@ -26,6 +26,7 @@ function Home({ listening, result, lists, addList, openList }) {
         <ul>
           { Object.keys(lists).map((name) => (
             <li key={name}>
+              <button onClick={() => startGame(name)} className={styles.play}>></button>
               <button onClick={() => openList(name)} className={styles.listName}>{name}</button>
             </li>
           ))}
