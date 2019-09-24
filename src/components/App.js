@@ -50,6 +50,9 @@ function App() {
   }
 
   function startGame(name) {
+    if (!listening) {
+      toggleListening();
+    }
     setGameName(name);
   }
 
@@ -59,7 +62,8 @@ function App() {
 
   function addWord(word, name) {
     const list = lists[name];
-    list[word.trim()] = {};
+    word = word.trim();
+    list[word] = { value: word };
     setLists({
       ...lists,
       [name]: {
@@ -82,7 +86,6 @@ function App() {
   const showGame = Boolean(gameName);
   const showList = !showGame && Boolean(listName);
   const showHome = !showGame && !showList;
-  console.log('g', showGame, 'l', showList, 'h', showHome);
 
   return (
     <Fragment>
@@ -120,7 +123,7 @@ function App() {
           <Game
             result={result}
             name={gameName}
-            list={lists[gameName]}
+            list={Object.values(lists[gameName])}
             stopGame={stopGame}
           />
         }
