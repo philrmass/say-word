@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+
 import { useLocalStorage } from '../utilities/storage';
 import Game from './Game';
 import Heard from './Heard';
@@ -8,7 +9,7 @@ import List from './List';
 function App() {
   const [recognizer, setRecognizer] = useState(null);
   const [listening, setListening] = useState(false);
-  const [result, setResult] = useState({ transcript: 'hello', confidence: .9544 });
+  const [result, setResult] = useState(null);
   const [listName, setListName] = useState(null);
   const [lists, setLists] = useLocalStorage('wordLists', {});
   const [gameName, setGameName] = useState(null);
@@ -39,6 +40,12 @@ function App() {
         [name]: {},
       }));
     }
+  }
+
+  function removeList(name) {
+    const removed = { ...lists };
+    delete removed[name]
+    setLists(removed);
   }
 
   function openList(name) {
@@ -104,6 +111,7 @@ function App() {
             result={result}
             lists={lists}
             addList={addList}
+            removeList={removeList}
             openList={openList}
             startGame={startGame}
           />
@@ -121,7 +129,7 @@ function App() {
         }
         { showGame &&
           <Game
-            result={result}
+            result={(result && result.transcript.trim()) || ''}
             name={gameName}
             list={Object.values(lists[gameName])}
             stopGame={stopGame}

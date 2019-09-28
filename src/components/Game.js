@@ -1,60 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/Game.module.css';
 
-function Game({ result, name, list, stopGame }) {
-  const [count, setCount] = useState(0);
-  const [retry, setRetry] = useState(0);
-  const [word, setWord] = useState(0);
-  const [score, setScore] = useState(0);
-  const [scoreClass, setScoreClass] = useState('');
-
-  function pickWord(list) {
+function pickWord(list, lastWord) {
+  let word = lastWord;
+  while (word === lastWord) {
     const index = Math.floor(list.length * Math.random());
-    return list[index];
+    word = list[index].value;
   }
+  return word;
+}
 
-  useEffect(() => {
-  }, []);
-
-  useEffect(() => {
-    if (count === 0) {
-      setWord(pickWord(list));
-      setCount(1);
-    } else {
-      const said = (result && result.transcript.trim()) || '';
-      if (said === word.value) {
-        setWord(pickWord(list));
-        setScore((score) => score + 1);
-        setCount((count) => count + 1);
-        setRetry(0);
-        setScoreClass('match');
-        setTimeout(() => setScoreClass(''), 1000);
-      } else if (retry > 0) {
-        setWord(pickWord(list));
-        setScore((score) => score - 1);
-        setCount((count) => count + 1);
-        setRetry(0);
-        setScoreClass('fail');
-        setTimeout(() => setScoreClass(''), 1000);
-      } else {
-        setRetry((retry) => retry + 1);
-        setScoreClass('retry');
-        setTimeout(() => setScoreClass(''), 1000);
+function gameReducer(state, action) {
+  switch (action.type) {
+    case 'guess':
+      if (action.word === state.word) {
+        return {
+          list: state.list,
+          word: pickWord(state.list, state.word),
+          score: state.score + 1,
+          scoreClass: 'match',
+          guesses: 1,
+        };
       }
-    }
-  }, [result, list]);
+      if (state.guesses > 0) {
+        return {
+          list: state.list,
+          word: state.word,
+          score: state.score,
+          scoreClass: 'guess',
+          guesses: state.guesses - 1,
+        };
+      }
+      return {
+        list: state.list,
+        word: pickWord(state.list, state.word),
+        score: state.score - 1,
+        scoreClass: 'fail',
+        guesses: 1
+      };
+    default:
+      throw Error('Default');
+  }
+}
+
+function Game({ result, name, list, stopGame }) {
+  const [state, dispatch] = useReducer(gameReducer, { word: pickWord(list, ''), score: 0, guesses: 1, scoreClass: '', list: list});
+
+  useEffect(() => {
+    dispatch({type: 'guess', word: result});
+    //setTimeout(() => dipatch({type: 'clearClass'}), 1000);
+  }, [result]);
 
   return (
     <main className={styles.main}>
       <div className={styles.questionBox}>
         <div className={styles.question}>
-          {word.value}
+          {state.word}
         </div>
       </div>
       <div className={styles.scoreBox}>
-        <div className={`${styles[scoreClass]} ${styles.score}`}>
-          {score}
+        {/*<div className={`${styles[scoreClass]} ${styles.score}`}>*/}
+        <div className={styles.score}>
+          {state.score}
         </div>
+        {state.guesses}
       </div>
       <div className={styles.stopBox}>
         <button className={styles.stop} onClick={stopGame}>Stop</button>
@@ -62,5 +72,12 @@ function Game({ result, name, list, stopGame }) {
     </main>
   );
 }
+
+Game.propTypes = {
+  result: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
+  stopGame: PropTypes.func.isRequired,
+};
 
 export default Game;
