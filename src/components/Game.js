@@ -39,6 +39,11 @@ function gameReducer(state, action) {
         scoreClass: 'fail',
         guesses: 1
       };
+    case 'clearClass':
+      return {
+        ...state,
+        scoreClass: '',
+      };
     default:
       throw Error('Default');
   }
@@ -48,8 +53,10 @@ function Game({ result, name, list, stopGame }) {
   const [state, dispatch] = useReducer(gameReducer, { word: pickWord(list, ''), score: 0, guesses: 1, scoreClass: '', list: list});
 
   useEffect(() => {
-    dispatch({type: 'guess', word: result});
-    //setTimeout(() => dipatch({type: 'clearClass'}), 1000);
+    if (result) {
+      dispatch({type: 'guess', word: result});
+      setTimeout(() => dispatch({type: 'clearClass'}), 1000);
+    }
   }, [result]);
 
   return (
@@ -60,11 +67,9 @@ function Game({ result, name, list, stopGame }) {
         </div>
       </div>
       <div className={styles.scoreBox}>
-        {/*<div className={`${styles[scoreClass]} ${styles.score}`}>*/}
-        <div className={styles.score}>
+        <div className={`${styles[state.scoreClass]} ${styles.score}`}>
           {state.score}
         </div>
-        {state.guesses}
       </div>
       <div className={styles.stopBox}>
         <button className={styles.stop} onClick={stopGame}>Stop</button>
