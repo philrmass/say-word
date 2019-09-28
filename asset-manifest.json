@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/say-word/static/css/main.6c52e83c.chunk.css",
-    "main.js": "/say-word/static/js/main.6083ddb4.chunk.js",
-    "main.js.map": "/say-word/static/js/main.6083ddb4.chunk.js.map",
+    "main.css": "/say-word/static/css/main.e3b5d88a.chunk.css",
+    "main.js": "/say-word/static/js/main.5179587f.chunk.js",
+    "main.js.map": "/say-word/static/js/main.5179587f.chunk.js.map",
     "runtime~main.js": "/say-word/static/js/runtime~main.4abc4a4f.js",
     "runtime~main.js.map": "/say-word/static/js/runtime~main.4abc4a4f.js.map",
-    "static/js/2.dd6ec53d.chunk.js": "/say-word/static/js/2.dd6ec53d.chunk.js",
-    "static/js/2.dd6ec53d.chunk.js.map": "/say-word/static/js/2.dd6ec53d.chunk.js.map",
+    "static/js/2.ee2750e0.chunk.js": "/say-word/static/js/2.ee2750e0.chunk.js",
+    "static/js/2.ee2750e0.chunk.js.map": "/say-word/static/js/2.ee2750e0.chunk.js.map",
     "index.html": "/say-word/index.html",
-    "precache-manifest.51e21f57c4ced6e2c2401f6810dc7e82.js": "/say-word/precache-manifest.51e21f57c4ced6e2c2401f6810dc7e82.js",
+    "precache-manifest.07c393f5af59507b923659d6670a1371.js": "/say-word/precache-manifest.07c393f5af59507b923659d6670a1371.js",
     "service-worker.js": "/say-word/service-worker.js",
-    "static/css/main.6c52e83c.chunk.css.map": "/say-word/static/css/main.6c52e83c.chunk.css.map"
+    "static/css/main.e3b5d88a.chunk.css.map": "/say-word/static/css/main.e3b5d88a.chunk.css.map"
   }
 }
