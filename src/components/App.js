@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import { useState } from 'preact/hooks';
 
-import { useLocalStorage } from '../utilities/storage';
+import { useLocalStorage } from 'utilities/hooks';
 import Game from './Game';
 import Heard from './Heard';
 import Home from './Home';
@@ -95,7 +95,7 @@ function App() {
   const showHome = !showGame && !showList;
 
   return (
-    <Fragment>
+    <>
       <header>
         <Heard
           listening={listening}
@@ -136,7 +136,7 @@ function App() {
           />
         }
       </main>
-    </Fragment>
+    </>
   );
 }
 

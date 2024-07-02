@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'preact/hooks';
 import PropTypes from 'prop-types';
 import styles from '../styles/Game.module.css';
 

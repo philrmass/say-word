@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import { useState } from 'preact/hooks';
 import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
 
@@ -13,7 +13,7 @@ function Home({ listening, result, lists, addList, removeList, openList, startGa
   }
 
   return (
-    <Fragment>
+    <>
       { addingList &&
         <div className={styles.addBox}>
           <div className={styles.addName}>{result && result.transcript}</div>
@@ -35,7 +35,7 @@ function Home({ listening, result, lists, addList, removeList, openList, startGa
           ))}
     </ul>
       </div>
-    </Fragment>
+    </>
   );
 }
 
